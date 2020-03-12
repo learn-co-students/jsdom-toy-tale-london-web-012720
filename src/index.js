@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.querySelector("#new-toy-btn");
   const toyForm = document.querySelector(".container");
   addBtn.addEventListener("click", () => {
-    // hide & seek with the form
     addToy = !addToy;
     if (addToy) {
       toyForm.style.display = "block";
@@ -42,8 +41,8 @@ addForm.addEventListener("submit", event => {
 });
 
 const renderNewToy = toy => {
-  const div = document.createElement("div")
-  div.className = "card";
+  const toyCard = document.createElement("div")
+  toyCard.className = "card";
   
  
   const toyName = document.createElement('h2')
@@ -59,6 +58,10 @@ const renderNewToy = toy => {
   const button = document.createElement('button')
   button.innerText = "Like <3"
   button.className = "like-btn"
+
+  const deleteBtn = document.createElement('button')
+  deleteBtn.innerText = "Delete"
+  deleteBtn.className = "delete-btn"
 
   button.addEventListener('click', () => {
     const configObject = {
@@ -77,8 +80,17 @@ const renderNewToy = toy => {
       })
     })
 
-  div.append(toyName, toyImg, toyLike, button)
-  toyCollection.append(div) 
+  toyCard.append(toyName, toyImg, toyLike, button, deleteBtn)
+  // toyCollection.append(toyCard) 
+
+  deleteBtn.addEventListener("click", () => {
+    fetch(`${TOY_API}/${toy.id}`, {
+      method: "DELETE"
+    }).then(() => toyCard.remove());
+  });
+
+  toyCollection.append(toyCard) 
+
 }
 
 const renderToys = toys => { 
