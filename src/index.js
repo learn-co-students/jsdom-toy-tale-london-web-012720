@@ -10,14 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   //instead, not in all the code where is present below
   const baseUrl = "http://localhost:3000"
   const toysUrl = baseUrl + "/toys"
-  
 
-  // I create this function for the 8th step
-  const init = () => {
-    fetchToys()
-    .then( renderToys )
-    // .then( (toys) => renderToys(toys) )
-  }
+
+  // I create this function for the 8th step, but it works without it...
+  // const init = () => {
+  //   fetchAllToys()
+  //   .then( renderToys )
+  //   .then( (toys) => renderToys(toys) )
+  // }
   
   
   //this code is already given by the exercise
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  init()
+  // init()
 
 
 });
