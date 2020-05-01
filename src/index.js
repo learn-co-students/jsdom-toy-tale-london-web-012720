@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //I add an event listener to the form and not just the button for it to be able to listen the form action, not just the button.
   toyForm.addEventListener('submit', (event) => {
     event.preventDefault() //this will prevent the default behaviour of pressing submit button and refresh the page completely, what I dont want
+    
     const toyName = event.target.name.value //I get this info with debugger in the console too
     const toyImage = event.target.image.value //I get this info with debugger in the console too
 
@@ -120,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Accept": "application/json",
       },
       body: JSON.stringify({
-        likes: ++toy.likes,
+        likes: ++toy.likes
       })
     })
     .then( resp => resp.json() )
